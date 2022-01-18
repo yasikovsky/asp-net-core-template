@@ -2,7 +2,7 @@
 
 ## What is this?
 
-This is a template you can use to quickly create a multiplatform ASP.NET Core 6 application that runs an API server and a worker process. It also features fully configured packages that I use the most when developing ASP.NET apps, which are:
+This is a template you can use to quickly create a multiplatform ASP.NET Core 6 application that runs an API server and a worker process as two projects under one solution. It also features fully configured packages that I use the most when developing ASP.NET apps, which are:
 
 - [AutoMapper](https://github.com/AutoMapper/AutoMapper) - an object mapper with a [dependecy injection extension](https://github.com/AutoMapper/AutoMapper.Extensions.Microsoft.DependencyInjection)
 - [Dapper](https://github.com/DapperLib/Dapper) - a simple ORM mapper
