@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectNameApi", "ProjectNameApi\ProjectNameApi.csproj", "{8EB2A5D4-08DA-49B7-BC4E-7E4F57EB0829}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectNameWorker", "ProjectNameWorker\ProjectNameWorker.csproj", "{42B72C91-52A2-4BC5-8997-974B554DE4B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EB2A5D4-08DA-49B7-BC4E-7E4F57EB0829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EB2A5D4-08DA-49B7-BC4E-7E4F57EB0829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EB2A5D4-08DA-49B7-BC4E-7E4F57EB0829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EB2A5D4-08DA-49B7-BC4E-7E4F57EB0829}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42B72C91-52A2-4BC5-8997-974B554DE4B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42B72C91-52A2-4BC5-8997-974B554DE4B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42B72C91-52A2-4BC5-8997-974B554DE4B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42B72C91-52A2-4BC5-8997-974B554DE4B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

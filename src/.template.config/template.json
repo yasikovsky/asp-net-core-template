@@ -1,0 +1,51 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Michal Jasikowski",
+    "classifications": ["common", "webapi"],
+    "name": "ASP.NET API & Worker template",
+    "shortName": "yaspnet",
+    "identity": "yaspnet",
+    "symbols": {
+        "DbHostname": {
+            "type": "parameter",
+            "replaces": "{DbHostname}",
+            "defaultValue": "localhost"
+        },
+        "DbPort": {
+            "type": "parameter",
+            "replaces": "{DbPort}",
+            "defaultValue": "5432"
+        },
+        "DbDatabase": {
+            "type": "parameter",
+            "replaces": "{DbDatabase}",
+            "defaultValue": "exampledb"
+        },
+        "DbUsername": {
+            "type": "parameter",
+            "replaces": "{DbUsername}",
+            "defaultValue": "exampleusername"
+        },
+        "DbPassword": {
+            "type": "parameter",
+            "replaces": "{DbPassword}",
+            "defaultValue": "examplepwd"
+        },
+        "ProjectName": {
+            "type": "parameter",
+            "replaces": "ProjectName",
+            "defaultValue": "Example",
+            "fileRename": "ProjectName"
+        },
+        "PasswordSalt": {
+            "type": "parameter",
+            "replaces": "{PasswordSalt}",
+            "defaultValue": "3g54XPFLgk44!wWhh7&@Vpxq2B4ZNB$@"
+        },
+        "JwtAuthSecret": {
+            "type": "parameter",
+            "replaces": "{JwtAuthSecret}",
+            "defaultValue": "JSu@pfiQbZL4R2s^d*Hd7qd8h*oHYfTp3A&mtVq8xw!k&b4pE@2!s7&zcj#5oG*r"
+        }
+    }
+}
