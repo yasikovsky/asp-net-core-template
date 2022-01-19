@@ -51,6 +51,7 @@ dotnet new yaspnet --ProjectName "MyProject" --DbHostname "127.0.0.1" --DbPort "
 ## Changelog
 
 1.0 - Initial release
+
 1.1 - Added:
 - Dockerfiles
 - Preconfigured Docker-compose.yaml file with example environment variable file
