@@ -1,0 +1,89 @@
+name: Publish Docker package on release
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+ push:
+   tags:
+     - 'v*'
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  # github.repository as <account>/<repo>
+  API_IMAGE_NAME: {GitHubOrgName}/ProjectNameLowercase-api
+  WORKER_IMAGE_NAME: {GitHubOrgName}/ProjectNameLowercase-worker
+
+jobs:
+  build:
+    runs-on: self-hosted
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Get release version
+        id: get-version
+        run: echo ::set-output name=RELEASE_VERSION::${GITHUB_REF##*/v}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Dotnet       
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.x
+       
+      # Login against a Docker registry except on PR
+      # https://github.com/docker/login-action
+      - name: Log into registry ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Extract metadata (tags, labels) for Docker
+      # https://github.com/docker/metadata-action
+      - name: Extract Docker metadata for ProjectNameLowercase-api
+        id: meta-api
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.API_IMAGE_NAME }}
+      
+      - name: Build ProjectNameLowercase-api
+        working-directory: ProjectNameApi
+        run: dotnet publish -c DockerPublish -o bin/build /p:AssemblyVersion=${{ steps.get-version.outputs.RELEASE_VERSION }} /p:FileVersion=${{ steps.get-version.outputs.RELEASE_VERSION }} 
+      - name: Copy output DLL to ProjectNameWorker
+        run: cp ProjectNameApi/bin/build/ProjectNameApi.dll ProjectNameWorker/
+
+      # Build and push Docker image with Buildx (don't push on PR)
+      # https://github.com/docker/build-push-action
+      - name: Build and push ProjectNameLowercase-api Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: ./ProjectNameApi
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta-api.outputs.tags }}
+          labels: ${{ steps.meta-api.outputs.labels }}
+          build-args: VERSION=${{steps.get-version.outputs.RELEASE_VERSION}}
+      
+      # Extract metadata (tags, labels) for Docker
+      # https://github.com/docker/metadata-action
+      - name: Extract Docker metadata for ProjectNameLowercase-worker
+        id: meta-worker
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.WORKER_IMAGE_NAME }}
+
+      # Build and push Docker image with Buildx (don't push on PR)
+      # https://github.com/docker/build-push-action
+      - name: Build and push ProjectNameLowercase-worker Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: ./ProjectNameWorker
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta-worker.outputs.tags }}
+          labels: ${{ steps.meta-worker.outputs.labels }}  
+   

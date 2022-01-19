@@ -45,7 +45,17 @@ dotnet new yaspnet
 
 Or with your own options:
 ```bash
-dotnet new yaspnet --ProjectName "MyProject" --DbHostname "127.0.0.1" --DbPort "5432" --DbDatabase "mydatabase" --DbUsername "myusername" --DbPassword "mypassword" --PasswordSalt "HowIsThisReallySecure" --JwtAuthSecret "ThisIsNotSecureEither"
+dotnet new yaspnet --ProjectName "MyProject" --DbHostname "127.0.0.1" --DbPort "5432" --DbDatabase "mydatabase" --DbUsername "myusername" --DbPassword "mypassword" --GitHubOrgName "my-org-name"
 ```
+
+## Changelog
+
+1.0 - Initial release
+1.1 - Added:
+- Dockerfiles
+- Preconfigured Docker-compose.yaml file with example environment variable file
+- Github Actions runner to publish Docker packages to GitHub package repository when creating new release (important to tag them in the vX.X.X format)
+- PasswordSalt is now a random UUID
+- JwtAuthSecret is now two joined random UUIDs
 ## Future improvements
 Docker support will be coming soon™.

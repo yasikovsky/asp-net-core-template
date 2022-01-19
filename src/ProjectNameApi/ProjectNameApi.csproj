@@ -38,7 +38,7 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Link>appsettings.Beta.json</Link>
         </Content>
-        <Content Condition="Exists('..\appsettings.Stagomg.json')" Include="..\appsettings.Staging.json" LinkBase="\">
+        <Content Condition="Exists('..\appsettings.Staging.json')" Include="..\appsettings.Staging.json" LinkBase="\">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Link>appsettings.Staging.json</Link>
         </Content>

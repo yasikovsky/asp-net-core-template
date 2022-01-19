@@ -5,6 +5,11 @@
     "name": "ASP.NET API & Worker template",
     "shortName": "yaspnet",
     "identity": "yaspnet",
+    "guids": [
+        "FAE04EC0-301F-11D3-BF4B-00C04F79EFBC",
+        "8EB2A5D4-08DA-49B7-BC4E-7E4F57EB0829",
+        "42B72C91-52A2-4BC5-8997-974B554DE4B0"
+      ],
     "symbols": {
         "DbHostname": {
             "type": "parameter",
@@ -31,21 +36,64 @@
             "replaces": "{DbPassword}",
             "defaultValue": "examplepwd"
         },
+        "GitHubOrgName": {
+            "type": "parameter",
+            "replaces": "{GitHubOrgName}",
+            "defaultValue": "example-org"
+        },
         "ProjectName": {
             "type": "parameter",
             "replaces": "ProjectName",
             "defaultValue": "Example",
             "fileRename": "ProjectName"
         },
+        "ProjectNameLowercase": {
+            "type": "generated",
+            "generator": "casing",
+            "parameters": {
+                "source": "ProjectName",
+                "toLower": true
+            },
+            "replaces": "ProjectNameLowercase"
+        },
         "PasswordSalt": {
-            "type": "parameter",
-            "replaces": "{PasswordSalt}",
-            "defaultValue": "3g54XPFLgk44!wWhh7&@Vpxq2B4ZNB$@"
+            "type": "generated",
+            "generator": "guid",
+            "parameters": {
+                "defaultFormat": "N"
+            },
+            "replaces": "{PasswordSalt}"
+        },
+        "JwtGuid1": {
+            "type": "generated",
+            "generator": "guid",
+            "parameters": {
+                "defaultFormat": "N"
+            }
+        },
+        "JwtGuid2": {
+            "type": "generated",
+            "generator": "guid",
+            "parameters": {
+                "defaultFormat": "N"
+            }
         },
         "JwtAuthSecret": {
-            "type": "parameter",
+            "type": "generated",
+            "generator": "join",
             "replaces": "{JwtAuthSecret}",
-            "defaultValue": "JSu@pfiQbZL4R2s^d*Hd7qd8h*oHYfTp3A&mtVq8xw!k&b4pE@2!s7&zcj#5oG*r"
+            "parameters": {
+                "symbols": [
+                    {
+                        "type":"ref",
+                        "value": "JwtGuid1"
+                    },
+                    {
+                        "type":"ref",
+                        "value": "JwtGuid2"
+                    }
+                ]
+            }
         }
     }
 }

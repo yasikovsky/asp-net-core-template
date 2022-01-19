@@ -1,0 +1,30 @@
+version: "3.8"
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.10.0/24
+          gateway: 10.10.10.1
+services:
+  ProjectNameLowercase-api:
+    container_name: ProjectNameLowercase-api
+    image: ghcr.io/{GitHubOrgName}/ProjectNameLowercase-api:latest
+    restart: on-failure
+    ports:
+      - "5000:80"
+      - "5001:443"
+    # volumes:
+    #   - ./cert:/https:ro
+    env_file:
+      - ./env/config.production.env
+  ProjectNameLowercase-worker:
+    container_name: ProjectNameLowercase-worker
+    image: ghcr.io/{GitHubOrgName}/ProjectNameLowercase-worker:latest
+    restart: on-failure
+    env_file:
+      - ./env/config.production.env
+    depends_on:
+      - seq
+

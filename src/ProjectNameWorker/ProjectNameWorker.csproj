@@ -9,10 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ProjectNameApi\ProjectNameApi.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
         <Content Condition="Exists('..\appsettings.json')" Include="..\appsettings.json" LinkBase="\">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Link>appsettings.json</Link>
@@ -25,10 +21,19 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Link>appsettings.Beta.json</Link>
         </Content>
-        <Content Condition="Exists('..\appsettings.Stagomg.json')" Include="..\appsettings.Staging.json" LinkBase="\">
+        <Content Condition="Exists('..\appsettings.Staging.json')" Include="..\appsettings.Staging.json" LinkBase="\">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Link>appsettings.Staging.json</Link>
         </Content>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)' == 'Release' ">
+        <Reference Include="ProjectNameApi">
+            <HintPath>ProjectNameApi.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\ProjectNameApi\ProjectNameApi.csproj" />
     </ItemGroup>
 
     <ItemGroup>
