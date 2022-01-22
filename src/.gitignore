@@ -1,2 +1,6 @@
+.idea
 appsettings.Development.json
 appsettings.json
+bin/
+obj/
+Docker/env/**

@@ -5,7 +5,7 @@
         <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-        <RootNamespace>ProjectName</RootNamespace>
+        <RootNamespace>ProjectNameApi</RootNamespace>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <IsPackable>true</IsPackable>
         <NoWarn>$(NoWarn);1591</NoWarn>
