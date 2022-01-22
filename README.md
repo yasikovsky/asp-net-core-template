@@ -48,6 +48,11 @@ Or with your own options:
 dotnet new yaspnet --ProjectName "MyProject" --DbHostname "127.0.0.1" --DbPort "5432" --DbDatabase "mydatabase" --DbUsername "myusername" --DbPassword "mypassword" --GitHubOrgName "my-org-name"
 ```
 
+4. Finish it up with restoring NuGet packages:
+```bash
+dotnet restore
+```
+
 ## Changelog
 
 1.0 - Initial release
