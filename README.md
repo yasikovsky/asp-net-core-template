@@ -55,13 +55,15 @@ dotnet restore
 
 ## Changelog
 
-1.0 - Initial release
+1.0.0 
+- Initial release
 
-1.1 - Added:
-- Dockerfiles
-- Preconfigured Docker-compose.yaml file with example environment variable file
-- Github Actions runner to publish Docker packages to GitHub package repository when creating new release (important to tag them in the vX.X.X format)
+1.1.0
+- Added Dockerfiles
+- Added Preconfigured Docker-compose.yaml file with example environment variable file
+- Added Github Actions runner to publish Docker packages to GitHub package repository when creating new release (important to tag them in the vX.X.X format)
 - PasswordSalt is now a random UUID
 - JwtAuthSecret is now two joined random UUIDs
-## Future improvements
-Docker support will be coming soon™.
+
+1.1.1
+- Small template modifications
